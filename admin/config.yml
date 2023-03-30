@@ -1,8 +1,7 @@
 # config.yml
 
 backend:
-  name: github
-  repo: modi-data/modi-data.github.io
+  name: git-gateway
   branch: main
 media_folder: 'assets/uploads'
 collections:
