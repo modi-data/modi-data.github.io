@@ -2,7 +2,7 @@
 
 backend:
   name: git-gateway
-  branch: livecms
+  branch: main
 media_folder: 'assets/uploads'
 collections:
   - name: 'dbFile'
