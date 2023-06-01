@@ -11,7 +11,7 @@ export class Database {
     async loadDb() {
         //Database
         const sqlPromise = initSqlJs({
-            locateFile: file => `/node_modules/sql.js/dist/sql-wasm.wasm`
+            locateFile: file => `https://sql.js.org/dist/sql-wasm.wasm`
         });
         const dataPromise = fetch("/metadata.sqlite3").then(res => res.arrayBuffer());
         const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
