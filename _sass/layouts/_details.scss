@@ -1,0 +1,48 @@
+.details-name {
+    margin-bottom: 25px;
+}
+
+.details-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-type {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    color: $theme-color;
+    display: inline-block;
+}
+
+.info-type-content {
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+.info-content-container {
+    margin-right: 25px;
+}
+
+.details-map {
+    margin: 0 !important;
+    min-width: 256px !important;
+    width: 256px !important;
+    height: 256px !important;
+}
+
+.hr-details {
+    border: none;
+    height: 2px;
+    background-color: $theme-color;
+    opacity: 0.8;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.details-dataset {
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-top: 10px;
+}

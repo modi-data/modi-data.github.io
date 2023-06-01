@@ -1,0 +1,17 @@
+{% if include.link %}
+  <a class="button-link" href={{include.link}}>
+    <button class="base-style 
+      {% if include.white_style %} white-style {% else %} standard-style {% endif %}
+      {% if include.big %} big-style {% else %} small-style {% endif %}"
+      {% if include.min-width %} style="min-width: {{ include.min-width }};"{% endif %} id={{include.id}}>
+      {{include.text}}
+    </button>
+  </a>
+{% else %}
+  <button class="base-style 
+    {% if include.white_style %} white-style {% else %} standard-style {% endif %}
+    {% if include.big %} big-style {% else %} small-style {% endif %}"
+    {% if include.min-width %} style="min-width: {{ include.min-width }};"{% endif %} id={{include.id}}>
+    {{include.text}}
+  </button>
+{% endif %}

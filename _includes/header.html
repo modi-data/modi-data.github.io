@@ -1,0 +1,24 @@
+<header>
+  <nav class="navbar navbar-expand">
+    <div class="container">
+      <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+          <a href="{{site.modi_icon_link}}" class="navbar-brand">
+            <img class="headericon" src="{{site.modi_icon | relative_url}}">
+          </a>
+        </li>
+        {% assign navPages = site.html_pages | sort: "nav_order" %}
+        {% for p in navPages %}
+          {% unless p.exclude %}
+            <li class="nav-item">
+              <a class="nav-link {% if page.title == p.title%}currentPage{% endif %}" 
+                href="{{ p.url | relative_url }}">
+                {{ p.title }}
+              </a>
+            </li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</header>

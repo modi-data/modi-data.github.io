@@ -1,0 +1,43 @@
+.searchResultsContainer {
+    width: 400px;
+}
+
+.searchResult {
+    margin-bottom: 15px;
+    list-style-type: none;
+    border: 1px solid $divider-color;
+}
+
+.resultName {
+    color: $theme-color;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.resultInfo {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 0.9rem;
+}
+
+.resultButton {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.searchContentContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.search-map {
+    margin: 0 !important;
+    max-width: 500px !important;
+    max-height: 500px !important;
+}

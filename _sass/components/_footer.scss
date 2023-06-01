@@ -1,0 +1,29 @@
+.footer-container {
+  box-shadow: none;
+  border-top: 1px solid $divider-color;
+  background-color: $footer-bg-color;
+  padding: 0;
+}
+
+.footer-content {
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  max-width: 600px !important;
+}
+
+.modifootericon {
+  height: 25px;
+}
+
+.linkedinfootericon {
+  height: 25px;
+}
+
+.twitterfootericon {
+  height: 25px;
+}
+
+.youtubefootericon {
+  height: 25px;
+}
