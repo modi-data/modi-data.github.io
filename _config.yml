@@ -12,12 +12,14 @@ modi_icon_link: https://modiproject.eu/
 linkedin_icon_link: https://www.linkedin.com/company/modi-project/?originalSubdomain=no
 twitter_icon_link: https://twitter.com/MODI_CCAM
 youtube_icon_link: https://www.youtube.com/@modi_project
+source_code_link: https://github.com/modi-data/modi-data.github.io
 
 #Assets
 modi_icon: "assets/img/MODIicon.png"
 linkedin_icon: "assets/img/linkedinicon.png"
 twitter_icon: "assets/img/twittericon.png"
 youtube_icon: "assets/img/youtubeicon.png"
+github_icon: "assets/img/githubicon.png"
 
 #scripts
 searchMain: "scripts/searchMain.js"
@@ -45,8 +47,8 @@ exclude: []
 # -----------------------------------------------------------------------------
 
 #sql.js wasm location
-sql-js: "/node_modules/sql.js/dist/sql-wasm.js"
-sql-wasm: "/node_modules/sql.js/dist/sql-wasm.wasm"
+sql-js: "https://sql.js.org/dist/sql-wasm.js"
+sql-wasm: "https://sql.js.org/dist/sql-wasm.wasm"
 
 bootstrap:
   version: "5.2.3"
