@@ -54,32 +54,31 @@ function showSearchResults() {
             let markers = new Array();
 
             let columnMap = db.getColumnMap(searchResults);
-            let cards = new Array();
 
-            for (let i = 0; i < res.length; i++) {
-                cards.push(document.createElement("li"));
-                markers.push(res[i][columnMap.get('id')]);
-            }
+            res.forEach((element) => {
+                let id = element[columnMap.get('id')];
+                markers.push(id);
+
+                const newCard = document.createElement("li");
+                newCard.className = "searchResult";
+
+                newCard.innerHTML = `<div class="resultName">${element[columnMap.get('name')]}</div>
+                <div class="resultInfo"><b>Stakeholder:</b> ${element[columnMap.get('stakeholder')]}</div>
+                <div class="resultInfo" id=location-${id}><b>Location:</b> None</div>
+                <div class="resultInfo"><b>Date:</b> ${element[columnMap.get('date')]}</div>
+                <div class="resultButton"><a class="button-link" href=${detailsURL + "?md=" + id}>
+                    <button class="base-style white-style small-style">More info</button></a></div>`;
+                
+                searchResultsDiv.appendChild(newCard);
+
+            }); 
 
             map.addMarkers(markers);
 
-            res.forEach(async (element, index) => {
-                const newCard = cards[index];
-                newCard.className = "searchResult";
-                
-                newCard.innerHTML = `<div class="resultName">${element[columnMap.get('name')]}</div>
-                <div class="resultInfo"><b>Stakeholder:</b> ${element[columnMap.get('stakeholder')]}</div>
-                <div class="resultInfo"><b>Location:</b> ${await coordsToAddress([element[columnMap.get('longitude')], element[columnMap.get('latitude')]])}</div>
-                <div class="resultInfo"><b>Date:</b> ${element[columnMap.get('date')]}</div>
-                <div class="resultButton"><a class="button-link" href=${detailsURL + "?md=" + element[columnMap.get('id')]}>
-                    <button class="base-style white-style small-style">More info</button></a></div>`
-
-                cards[index] = newCard;
+            res.forEach(async (element) => {
+                const field = document.getElementById(`location-${element[columnMap.get('id')]}`);
+                field.innerHTML = `<b>Location:</b> ${await coordsToAddress([element[columnMap.get('longitude')], element[columnMap.get('latitude')]])}`;
             });
-
-            for (let i = 0; i < cards.length; i++) {
-                searchResultsDiv.appendChild(cards[i]);
-            }
         }
     );
 }
