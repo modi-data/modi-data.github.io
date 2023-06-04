@@ -125,7 +125,7 @@ export class OLMap {
                 view.setZoom(view.getZoom() - 1);
             } else {
                 this.map.getView().setCenter(ol.proj.fromLonLat(randomLocation));
-                this.map.getView().setZoom(5); //Number 5 is arbitrary, but the zoom is decent
+                this.map.getView().setZoom(6); //Number 5 is arbitrary, but the zoom is decent
             }
         });
     }

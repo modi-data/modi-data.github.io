@@ -27,7 +27,11 @@ async function searchDB() {
     }
 
     if (stakeholderIn.value) {
-        qc.addComponent('WHERE', `stakeholder='${stakeholderIn.value}'`);
+        await db.querySQL(`SELECT id FROM stakeholders WHERE name = '${stakeholderIn.value}'`).then(
+            function(res) {
+                qc.addComponent('WHERE', `stakeholder=${res[0]['values'][db.getColumnMap(res).get('id')]}`)
+            }
+        );
     }
 
     if (dateIn.value) {
@@ -63,7 +67,7 @@ function showSearchResults() {
                 newCard.className = "searchResult";
 
                 newCard.innerHTML = `<div class="resultName">${element[columnMap.get('name')]}</div>
-                <div class="resultInfo"><b>Stakeholder:</b> ${element[columnMap.get('stakeholder')]}</div>
+                <div class="resultInfo" id=stakeholder-${element[columnMap.get('stakeholder')]}-${element[columnMap.get('id')]}><b>Stakeholder:</b> None</div>
                 <div class="resultInfo" id=location-${id}><b>Location:</b> None</div>
                 <div class="resultInfo"><b>Date:</b> ${element[columnMap.get('date')]}</div>
                 <div class="resultButton"><a class="button-link" href=${detailsURL + "?md=" + id}>
@@ -78,6 +82,14 @@ function showSearchResults() {
             res.forEach(async (element) => {
                 const field = document.getElementById(`location-${element[columnMap.get('id')]}`);
                 field.innerHTML = `<b>Location:</b> ${await coordsToAddress([element[columnMap.get('longitude')], element[columnMap.get('latitude')]])}`;
+
+                db.querySQL(`SELECT name FROM stakeholders WHERE id = ${element[columnMap.get('stakeholder')]}`).then(
+                    function(shResults) {
+                        let shMap = db.getColumnMap(shResults);
+                        const shField = document.getElementById(`stakeholder-${element[columnMap.get('stakeholder')]}-${element[columnMap.get('id')]}`);
+                        shField.innerHTML = `<b>Stakeholder:</b> ${shResults[0]['values'][shMap.get('name')]}`
+                    }
+                );
             });
         }
     );
@@ -99,4 +111,4 @@ function addOptions(table, column, htmlId) {
 
 searchButton.addEventListener("click", showSearchResults);
 
-addOptions("metadata", "stakeholder", "stakeholderOptions");
+addOptions("stakeholders", "name", "stakeholderOptions");
