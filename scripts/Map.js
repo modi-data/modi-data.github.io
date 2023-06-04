@@ -118,7 +118,15 @@ export class OLMap {
             }
         ).then(_ => { 
             this.marker.getSource().addFeatures(features);
-            this.map.getView().setCenter(ol.proj.fromLonLat(randomLocation));
+
+            if (features.length > 1) {
+                const view = this.map.getView();
+                view.fit(this.marker.getSource().getExtent());
+                view.setZoom(view.getZoom() - 1);
+            } else {
+                this.map.getView().setCenter(ol.proj.fromLonLat(randomLocation));
+                this.map.getView().setZoom(5); //Number 5 is arbitrary, but the zoom is decent
+            }
         });
     }
 
