@@ -1,5 +1,20 @@
+.searchInterfaceContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.searchTextInputInterface {
+    width: 100%;
+}
+
 .searchResultsContainer {
     width: 400px;
+}
+
+.searchContentContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
 .searchResult {
@@ -27,13 +42,6 @@
     margin-top: 15px;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.searchContentContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
 .search-map {

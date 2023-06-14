@@ -22,7 +22,8 @@ youtube_icon: "assets/img/youtubeicon.png"
 github_icon: "assets/img/githubicon.png"
 
 #scripts
-searchMain: "scripts/searchMain.js"
+searchMetadata: "scripts/searchMetadata.js"
+searchStakeholder: "scripts/searchStakeholder.js"
 homeScript: "scripts/home.js"
 details: "scripts/details.js"
 

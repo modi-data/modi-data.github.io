@@ -3,7 +3,6 @@ import { coordsToAddress } from './location.js';
 import { QueryConstructor } from './QueryConstructor.js';
 import { OLMap } from './Map.js';
 
-const SEARCH_LIMIT = 5;
 const detailsURL = window.location.origin + "/details";
 
 const map = new OLMap(true);
