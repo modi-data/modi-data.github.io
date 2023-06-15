@@ -25,7 +25,8 @@ github_icon: "assets/img/githubicon.png"
 searchMetadata: "scripts/searchMetadata.js"
 searchStakeholder: "scripts/searchStakeholder.js"
 homeScript: "scripts/home.js"
-details: "scripts/details.js"
+detailsMetadata: "scripts/detailsMetadata.js"
+detailsStakeholder: "scripts/detailsStakeholder.js"
 
 # -----------------------------------------------------------------------------
 # Style settings

@@ -8,6 +8,8 @@ other_type: stakeholders
 --- 
 
 <center>
+<h2>Search for metadata</h2>
+<br>
 {% include textinputfield.html placeholder="Search" id="searchID" %}
 <br><br>
 {% include textinputfield.html placeholder="Stakeholder" id="stakeholderID" options="stakeholderOptions" %}

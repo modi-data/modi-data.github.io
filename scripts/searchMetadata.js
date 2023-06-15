@@ -2,10 +2,11 @@ import { db } from './Database.js';
 import { coordsToAddress } from './location.js';
 import { QueryConstructor } from './QueryConstructor.js';
 import { OLMap } from './Map.js';
+import { addOptions } from './util.js';
 
-const detailsURL = window.location.origin + "/details";
+const detailsURL = window.location.origin + "/detailsmetadata";
 
-const map = new OLMap(true);
+const map = new OLMap("metadata", true);
 
 const searchResultsDiv = document.getElementById('searchResults');
 
@@ -19,7 +20,7 @@ const searchButton = document.getElementById('searchButtonID');
 
 
 async function searchDB() {
-    const qc = new QueryConstructor("SELECT * FROM metadata ");
+    const qc = new QueryConstructor("SELECT id, name, stakeholder, longitude, latitude, date FROM metadata ");
 
     if (searchIn.value) {
         qc.addComponent('WHERE', `(name LIKE '%${searchIn.value}%' OR description LIKE '%${searchIn.value}%')`);
@@ -94,20 +95,6 @@ function showSearchResults() {
     );
 }
 
-function addOptions(table, column, htmlId) {
-    db.querySQL(`SELECT DISTINCT ${column} FROM ${table}`).then(
-        function(searchResults) {
-            const datalist = document.getElementById(htmlId);
-            datalist.innerHTML = "";
-
-            searchResults[0]['values'].forEach(element => {
-                datalist.innerHTML = datalist.innerHTML + `<option value="${element[0]}">`
-            });
-        }
-    );
-}
-
-
 searchButton.addEventListener("click", showSearchResults);
 
-addOptions("stakeholders", "name", "stakeholderOptions");
+addOptions(db, "stakeholders", "name", "stakeholderOptions");

@@ -7,14 +7,22 @@ export class OLMap {
     overlay = null;
     addPopup = true; //if false, add popups when markers are clicked
     detailsURL = window.location.origin + "/details";
+    table = "";
 
     //Popup elements
     container = null;
     content = null;
     closer = null;
 
-    constructor(addPopup) {
+    constructor(table, addPopup) {
+        this.table = table;
         this.addPopup = addPopup;
+        
+        if (table == "metadata") {
+            this.detailsURL = this.detailsURL + "metadata";
+        } else if (table == "stakeholders") {
+            this.detailsURL = this.detailsURL + "stakeholder";
+        }
 
         this.initMap();
 
@@ -98,7 +106,7 @@ export class OLMap {
         let features = this.marker.getSource().getFeatures();
         let randomLocation;
 
-        db.querySQL(`SELECT id, longitude, latitude FROM metadata WHERE id IN (${IDs.toString()})`).then(
+        db.querySQL(`SELECT id, longitude, latitude FROM ${this.table} WHERE id IN (${IDs.toString()})`).then(
             async function(searchResults) {
                 let columnMap = db.getColumnMap(searchResults);
     
@@ -141,21 +149,38 @@ export class OLMap {
     }
 
     constructPopup(feature) {
-        db.querySQL(`SELECT name, stakeholder, longitude, latitude, date FROM metadata WHERE id = ${feature.get('id')}`).then(
-            async (searchResults) => {
-                let res = searchResults[0]['values'][0];
-                let columnMap = db.getColumnMap(searchResults);
-
-                this.content.innerHTML = `<div class="resultName">${res[columnMap.get('name')]}</div>
-                <div class="resultInfo"><b>Stakeholder:</b> ${res[columnMap.get('stakeholder')]}</div>
-                <div class="resultInfo"><b>Location:</b> ${await coordsToAddress([res[columnMap.get('longitude')], res[columnMap.get('latitude')]])}</div>
-                <div class="resultInfo"><b>Date:</b> ${res[columnMap.get('date')]}</div>
-                <div class="resultButton"><a class="button-link" href=${this.detailsURL + "?md=" + feature.get('id')}>
-                    <button class="base-style white-style small-style">More info</button></a></div>`;
-
-                this.overlay.setPosition(feature.getGeometry().getCoordinates());
-            }
-        );
+        if (this.table == 'metadata') {
+            db.querySQL(`SELECT name, stakeholder, longitude, latitude, date FROM metadata WHERE id = ${feature.get('id')}`).then(
+                async (searchResults) => {
+                    let res = searchResults[0]['values'][0];
+                    let columnMap = db.getColumnMap(searchResults);
+    
+                    this.content.innerHTML = `<div class="resultName">${res[columnMap.get('name')]}</div>
+                    <div class="resultInfo"><b>Stakeholder:</b> ${res[columnMap.get('stakeholder')]}</div>
+                    <div class="resultInfo"><b>Location:</b> ${await coordsToAddress([res[columnMap.get('longitude')], res[columnMap.get('latitude')]])}</div>
+                    <div class="resultInfo"><b>Date:</b> ${res[columnMap.get('date')]}</div>
+                    <div class="resultButton"><a class="button-link" href=${this.detailsURL + "?md=" + feature.get('id')}>
+                        <button class="base-style white-style small-style">More info</button></a></div>`;
+    
+                    this.overlay.setPosition(feature.getGeometry().getCoordinates());
+                }
+            );
+        } else if (this.table == 'stakeholders') {
+            db.querySQL(`SELECT name, longitude, latitude, type FROM stakeholders WHERE id = ${feature.get('id')}`).then(
+                async (searchResults) => {
+                    let res = searchResults[0]['values'][0];
+                    let columnMap = db.getColumnMap(searchResults);
+    
+                    this.content.innerHTML = `<div class="resultName">${res[columnMap.get('name')]}</div>
+                    <div class="resultInfo"><b>Type:</b> ${res[columnMap.get('type')]}</div>
+                    <div class="resultInfo"><b>Location:</b> ${await coordsToAddress([res[columnMap.get('longitude')], res[columnMap.get('latitude')]])}</div>
+                    <div class="resultButton"><a class="button-link" href=${this.detailsURL + "?md=" + feature.get('id')}>
+                        <button class="base-style white-style small-style">More info</button></a></div>`;
+    
+                    this.overlay.setPosition(feature.getGeometry().getCoordinates());
+                }
+            );
+        }
     }
 
     mapClick(evt) {
@@ -172,7 +197,9 @@ export class OLMap {
                 this.closePopup();
             }
         } else {
-            console.log("A different button was pressed")
+            let lonlat = ol.proj.toLonLat(evt.coordinate);
+            let locationIn = document.getElementById("locationID");
+            locationIn.value = `${lonlat[0]}, ${lonlat[1]}`;
         }
     }
 }
