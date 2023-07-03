@@ -3,7 +3,7 @@ layout: home
 title: Home
 permalink: /
 nav_order: 1
-script: scripts/home.html
+script: scripts/home.js
 ---
 
 # Find data on the MODI project here.

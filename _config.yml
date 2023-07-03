@@ -21,13 +21,6 @@ twitter_icon: "assets/img/twittericon.png"
 youtube_icon: "assets/img/youtubeicon.png"
 github_icon: "assets/img/githubicon.png"
 
-#scripts
-searchMetadata: "scripts/searchMetadata.js"
-searchStakeholder: "scripts/searchStakeholder.js"
-homeScript: "scripts/home.js"
-detailsMetadata: "scripts/detailsMetadata.js"
-detailsStakeholder: "scripts/detailsStakeholder.js"
-
 # -----------------------------------------------------------------------------
 # Style settings
 # -----------------------------------------------------------------------------

@@ -23,7 +23,8 @@
     <!-- JavaScripts -->
     {% include scripts/bootstrap.html %}
     {% if page.script %}
-      {% include {{page.script}} %}
+      {% include scripts/defaultLibraries.html %}
+      <script type="module" src='{{ page.script | relative_url }}'></script>
     {% endif %}
   </body>
 </html>

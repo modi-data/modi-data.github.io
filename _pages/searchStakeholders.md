@@ -2,7 +2,7 @@
 layout: search
 permalink: /searchstakeholders/
 nav_order: 2
-script: scripts/searchStakeholders.html
+script: scripts/searchStakeholder.js
 exclude: true
 other_type: metadata
 --- 
