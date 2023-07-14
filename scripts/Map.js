@@ -113,7 +113,7 @@ export class OLMap {
                 await searchResults[0]['values'].forEach(async element => {
                     const location = [element[columnMap.get('longitude')], element[columnMap.get('latitude')]];
                     randomLocation = location;
-
+                    
                     features.push(
                         new ol.Feature({
                             geometry: new ol.geom.Point(
