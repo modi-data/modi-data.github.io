@@ -45,7 +45,7 @@ async function searchDB() {
     }
 
     qc.addQC(flexInput.getQC());
-
+    console.log(qc.getComponents());
     return db.querySQL(qc.getQuery());
 }
 
