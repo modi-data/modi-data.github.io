@@ -1,0 +1,11 @@
+{% assign fieldId = include.id | append: 'Field' %}
+{% assign fieldOptions = include.id | append: 'FieldOptions' %}
+
+<div class="flexInputContainer">
+    <div class="flexInput">
+        {% include textinputfield.html placeholder="Search" id=include.id %}
+    </div>
+    <div class="flexInput">
+        {% include textinputfield.html placeholder="Field" id=fieldId options=fieldOptions %}
+    </div>
+</div>

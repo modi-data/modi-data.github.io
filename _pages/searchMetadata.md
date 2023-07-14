@@ -18,5 +18,7 @@ other_type: stakeholders
 <br><br>
 {% include textinputfield.html type="date" placeholder="Date" id="dateID" %}
 <br><br>
+{% include flexInput.html id="flex" %}
+<br><br>
 {% include button.html text="Search" big=true id="searchButtonID" %} 
 </center>

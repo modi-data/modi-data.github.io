@@ -27,6 +27,17 @@ export class QueryConstructor {
         return comp;
     }
 
+    getComponents() {
+        return this.components;
+    }
+
+    addQC(qc) {
+        console.log(qc.getComponents())
+        qc.getComponents().forEach((value, key, map) => {
+            this.addComponent(key, value)
+        });
+    }
+
     getQuery() {
         let query = this.baseText;
 

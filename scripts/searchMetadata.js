@@ -3,6 +3,7 @@ import { coordsToAddress } from './location.js';
 import { QueryConstructor } from './QueryConstructor.js';
 import { OLMap } from './Map.js';
 import { addOptions } from './util.js';
+import { FlexInput } from './FlexInput.js';
 
 const detailsURL = window.location.origin + "/detailsmetadata";
 
@@ -42,6 +43,8 @@ async function searchDB() {
         let lonLat = locationIn.value.split(/[ ,]+/);
         qc.addComponent('ORDER BY', `((longitude - ${lonLat[0]}) * (longitude - ${lonLat[0]}) + (latitude - ${lonLat[1]}) * (latitude - ${lonLat[1]}))`)
     }
+
+    qc.addQC(flexInput.getQC());
 
     return db.querySQL(qc.getQuery());
 }
@@ -98,3 +101,5 @@ function showSearchResults() {
 searchButton.addEventListener("click", showSearchResults);
 
 addOptions(db, "stakeholders", "name", "stakeholderOptions");
+
+const flexInput = new FlexInput('metadata', 'flex');

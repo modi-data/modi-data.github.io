@@ -19,7 +19,8 @@ function loadDetails() {
             fillDetail("location", await coordsToAddress(location));
             fillDetail("date", String(metadata[columnMap.get('date')]));
             fillDetail("description", String(metadata[columnMap.get('description')]));
-            document.getElementById('url').href = String(metadata[columnMap.get('url')]);
+            document.getElementById('url-dataset').href = String(metadata[columnMap.get('url')]);
+            document.getElementById('url-metadata').href = `${window.location.origin}/data/metadataFiles/${String(metadata[columnMap.get('file')])}`;
         }
     );
 

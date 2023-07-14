@@ -13,7 +13,7 @@ export class Database {
         const sqlPromise = initSqlJs({
             locateFile: file => `https://sql.js.org/dist/sql-wasm.wasm`
         });
-        const dataPromise = fetch("/metadata.sqlite3").then(res => res.arrayBuffer());
+        const dataPromise = fetch("/data/metadata.sqlite3").then(res => res.arrayBuffer());
         const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
         
         this.db = new SQL.Database(new Uint8Array(buf));
