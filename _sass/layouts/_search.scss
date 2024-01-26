@@ -1,3 +1,13 @@
+.search-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $search-container-bg-color;
+    border-radius: 10px;
+}
+
+/*
 .searchInterfaceContainer {
     display: flex;
     justify-content: flex-end;
@@ -48,4 +58,4 @@
     margin: 0 !important;
     max-width: 500px !important;
     max-height: 500px !important;
-}
+}*/

@@ -1,0 +1,22 @@
+{
+  "search": {
+    "text": [
+      "summary-why_was_it_collected",
+      "summary-objectives",
+      "summary-research_questions"],
+    "producer": "summary-producer_of_data",
+    "area": "summary-data_area",
+    "type": "summary-data_type",
+    "usecase": "summary-modi_use_case"
+  },
+  "show": {
+    "contact": "summary-contact_person",
+    "dataset_size": "summary-dataset_size",
+    "rights": "administrative-rights",
+    "access": "administrative-access",
+    "billing": "administrative-billing",
+    "data_end_of_life": "administrative-data_end_of_life",
+    "collection_prep": "administrative-processes-collection_preparation",
+    "collection": "administrative-processes-collection"
+  }
+}

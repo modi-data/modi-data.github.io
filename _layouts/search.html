@@ -1,11 +1,36 @@
 ---
 layout: default
 ---
+<div class="container search-container">
+    <div class="row">
+        <div class="col" style="padding-right: 0px;">
+            {% include textinputfield.html placeholder="Search..." id="searchID" %}
+        </div>
+        <div class="col-md-auto" style="padding-left: 0px;">
+            {% include searchButton.html id="searchButtonID" %} 
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col" style="padding-right: 0px;">
+            {% include textinputfield.html placeholder="Producer" id="producerID" options="producerOptions" %}
+        </div>
+        <div class="col" style="padding-right: 0px;">
+            {% include textinputfield.html placeholder="Area" id="areaID" options="areaOptions"%}
+        </div>
+        <div class="col" style="padding-right: 0px;">
+            {% include textinputfield.html placeholder="Data type" id="typeID" options="typeOptions"%}
+        </div>
+        <div class="col">
+            {% include textinputfield.html placeholder="Modi use case" id="usecaseID" options="usecaseOptions"%}
+        </div>
+    </div>
+</div>
+<!--
 <div class="searchInterfaceContainer">
     <div class="searchTextInputInterface">
         {{ content }}
     </div>
-    <!--The div element for the map -->
+    
     <div class="search-map" id="map"> </div>
     <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -20,4 +45,4 @@ layout: default
     <ul class='searchResultsContainer' id='searchResults'>
     </ul>
     {% include button.html text=other_text link=other_link %}
-</div>
+</div>-->

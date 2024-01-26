@@ -1,7 +1,7 @@
 {% if include.options %}
 
 <input class="text-input-field" type="text" 
-    placeholder={{include.placeholder}} onfocus="this.placeholder = ''" onblur="this.placeholder = '{{include.placeholder}}'"
+    placeholder="{{include.placeholder}}" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{include.placeholder}}'"
     id={{include.id}} list={{include.options}}>
     <datalist id={{include.options}}>
     </datalist>
@@ -9,7 +9,7 @@
 {% else %}
 
 <input class="text-input-field" type={{ include.type | default: 'text' }} 
-    placeholder={{include.placeholder}} onfocus="this.placeholder = ''" onblur="this.placeholder = '{{include.placeholder}}'"
+    placeholder="{{include.placeholder}}" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{include.placeholder}}'"
     id={{include.id}}>
     
 {% endif %}

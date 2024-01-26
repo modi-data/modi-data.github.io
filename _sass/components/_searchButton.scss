@@ -1,0 +1,13 @@
+.search-button {
+  background-color: $theme-color;
+  border: none;
+  color: $button-standard-text-color;
+  aspect-ratio: 1 / 1;
+  width: 41px;
+}
+
+.search-icon {
+  width: 70%;
+  object-fit: cover;
+  filter: brightness(0) invert(1);
+}
