@@ -1,10 +1,16 @@
-{% if include.options %}
+{% if include.select %}
+
+<select placeholder="{{include.placeholder}}" id={{include.id}}>
+    <option value="All">All</option>
+</select>
+
+{% elsif include.options %}
 
 <input class="text-input-field" type="text" 
     placeholder="{{include.placeholder}}" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{include.placeholder}}'"
     id={{include.id}} list={{include.options}}>
     <datalist id={{include.options}}>
-    </datalist>
+    </datalist>  
 
 {% else %}
 

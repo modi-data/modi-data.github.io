@@ -1,5 +1,7 @@
 export class Database {
     db = null;
+    name = "metadata";
+    tableName = "metadata";
 
     constructor() {
         this.loadDb();

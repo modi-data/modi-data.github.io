@@ -1,14 +1,10 @@
-export function addOptions(db, table, column, htmlId) {
-    db.querySQL(`SELECT DISTINCT ${column} FROM ${table}`).then(
-        function(searchResults) {
-            const datalist = document.getElementById(htmlId);
-            datalist.innerHTML = "";
-
-            searchResults[0]['values'].forEach(element => {
-                datalist.innerHTML = datalist.innerHTML + `<option value="${element[0]}">`
-            });
+export function addOptions(db, column, htmlID) {
+    const datalist = document.getElementById(htmlID);
+    db.querySQL(`SELECT DISTINCT "${column}" FROM ${db.tableName}`).then(res => {
+        for (let row in res) {
+            datalist.innerHTML = datalist.innerHTML + `<option value="${res[row][column]}"></option>`
         }
-    );
+    });
 }
 
 //Get variables encoded in the url
