@@ -4,7 +4,7 @@ layout: default
 <div class="container search-container">
     <div class="row">
         <div class="col" style="padding-right: 0px;">
-            {% include textinputfield.html placeholder="Search..." id="searchID" %}
+            {% include textinputfield.html placeholder="Search..." id="textID" %}
         </div>
         <div class="col-md-auto" style="padding-left: 0px;">
             {% include searchButton.html id="searchButtonID" %} 
@@ -25,24 +25,3 @@ layout: default
         </div>
     </div>
 </div>
-<!--
-<div class="searchInterfaceContainer">
-    <div class="searchTextInputInterface">
-        {{ content }}
-    </div>
-    
-    <div class="search-map" id="map"> </div>
-    <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
-    </div>
-</div>
-
-{% assign other_text = "Search for " | append: page.other_type %}
-{% assign other_link = "search" | append: page.other_type | relative_url %}
-
-<div class="searchContentContainer">
-    <ul class='searchResultsContainer' id='searchResults'>
-    </ul>
-    {% include button.html text=other_text link=other_link %}
-</div>-->

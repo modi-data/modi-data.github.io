@@ -1,4 +1,39 @@
 import { db } from './Database.js';
+
+//Main functionality
+async function search() {
+    db.querySQL("SELECT * FROM metadata").then(res => {
+        console.log(res);
+    });
+
+    console.log(config);
+    console.log(inputfields);
+}
+
+//Global
+let inputfields = null;
+let config = null;
+const searchButton = document.getElementById("searchButtonID");
+
+//Run on page load
+fetch('/data/config.json').then(res => {
+    if (!res.ok) {
+        throw new Error("HTTP error " + res.status);
+    }
+
+    return res.json();
+}).then(resJson => {
+    config = resJson;
+    inputfields = {};
+
+    for (let key in config["search"]) {
+        inputfields[key] = document.getElementById(`${key}ID`);
+    }
+}).then(() => {
+    searchButton.addEventListener("click", search);
+});
+
+/*import { db } from './Database.js';
 import { coordsToAddress } from './location.js';
 import { QueryConstructor } from './QueryConstructor.js';
 import { OLMap } from './Map.js';
@@ -102,4 +137,4 @@ searchButton.addEventListener("click", showSearchResults);
 
 addOptions(db, "stakeholders", "name", "stakeholderOptions");
 
-const flexInput = new FlexInput('metadata', 'flex');
+const flexInput = new FlexInput('metadata', 'flex');*/

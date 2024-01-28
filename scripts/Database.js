@@ -19,33 +19,35 @@ export class Database {
         this.db = new SQL.Database(new Uint8Array(buf));
     }
 
-    /* Find which index in the values array corresponds to which column in the database
-    *
-    * @param queryResult, db.exec return object
-    * @return map, Column names (String) to index (int)
-    */
-    getColumnMap(queryResult) {
-        let columnMap = new Map();
-        let columnArray = queryResult[0].columns;
-
-        for (let i = 0; i < columnArray.length; i++) {
-            columnMap.set(columnArray[i], i);
-        }
-
-        return columnMap;
-    }
-
     /* Query the database
     * 
     * @param sqlString, an sql query (String)
     * @return result object, contains a 'column' array and a 'values' array 
     */
-    async querySQL(sqlString) {
+    async querySQL(sqlString, json=true) {
         while(this.db == null) {
             await new Promise(resolve => setTimeout(resolve, 100));
         }
+        
+        const queryRes = this.db.exec(sqlString)["0"];
 
-        return this.db.exec(sqlString);
+        if (json) {
+            let jsonRes = {};
+            let col = queryRes["columns"];
+            let val = queryRes["values"];
+
+            for (var r = 0; r < val.length; r++) {
+                let jsonRow = {};
+                for (var c = 0; c < col.length; c++) {
+                    jsonRow[col[c]] = val[r][c];
+                }
+                jsonRes[r] = jsonRow;
+            }
+
+            return jsonRes;
+        }
+
+        return queryRes;
     }
 }
 
