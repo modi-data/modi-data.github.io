@@ -5,6 +5,7 @@
     padding-right: 10px;
     background-color: $search-container-bg-color;
     border-radius: 10px;
+    box-shadow: 1px 1px 4px;
 }
 
 .searchResultsBody {
@@ -18,12 +19,13 @@
     list-style-type: none;
     border-radius: 10px;
     background-color: $searchresult-base-bg-color;
-    transition: background-color 0.5s;
+    transition: 0.6s;
 }
 
 .searchResult:hover {
     background-color: $search-container-bg-color;
-    transition: background-color 0.5s;
+    box-shadow: 1px 1px 4px;
+    transition: 0.3s;
 }
 
 .resultName {
