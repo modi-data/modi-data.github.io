@@ -18,10 +18,10 @@ const resultsContainer = document.getElementById("searchResultsBody");
 function translateRes(queryRes) {
     let translation = {};
 
-    for (let qKey in queryRes) {
+    for (const qKey in queryRes) {
         let resultTrans = {}
 
-        for (let cKey in config) {
+        for (const cKey in config) {
             let data = "";
 
             const f = config[cKey]["fields"];
@@ -52,7 +52,7 @@ function buildResultHtml(res) {
 async function displaySearchResults(res) {
     resultsContainer.innerHTML = "";
 
-    for (let key in res) {
+    for (const key in res) {
         const result = document.createElement("li");
         result.className = 'container searchResult';
         result.id = res[key]["id"];
@@ -66,7 +66,7 @@ async function search() {
     let optionsSet = false;
 
     // Add options to query
-    for (let key in config) {
+    for (const key in config) {
         if (config[key]["type"] == "options" && input[key].value) {
             if (!optionsSet) {
                 query = `${query} WHERE `;
@@ -103,7 +103,7 @@ fetch('/data/config.json').then(res => { //Check fetch response
     input = {};
     columns = 'id, file, ';
 
-    for (let key in config) {
+    for (const key in config) {
         if (config[key]["type"] == "hidden") {
             continue;
         }
@@ -120,7 +120,7 @@ fetch('/data/config.json').then(res => { //Check fetch response
 }).then(() => { //Setup eventlistener
     searchButton.addEventListener("click", search);
 }).then(() => { //Load options
-    for (let key in config) {
+    for (const key in config) {
         let col = config[key];
 
         if (col["type"] == "options") {
