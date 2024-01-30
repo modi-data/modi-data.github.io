@@ -49,7 +49,8 @@ function buildResultHtml(res) {
 }
 
 async function displaySearchResults(res) {
-    console.log(res);
+    resultsContainer.innerHTML = "";
+
     for (let key in res) {
         const result = document.createElement("li");
         result.className = 'container searchResult';
@@ -71,8 +72,12 @@ async function search() {
                 optionsSet = true;
             }
 
-            query = `${query}"${config[key]["fields"][0]}"='${input[key].value}' `;
+            query = `${query}"${config[key]["fields"][0]}"='${input[key].value}' AND `;
         }
+    }
+
+    if (optionsSet) {
+        query = query.slice(0, -" AND ".length);
     }
 
     db.querySQL(query).then(res => {
