@@ -32,6 +32,11 @@
     color: $theme-color;
     font-weight: 600;
     font-size: 1.15rem;
+    text-decoration: none;
+}
+
+.resultName:hover {
+    text-decoration: underline;
 }
 
 .resultText {
@@ -48,56 +53,3 @@
     font-weight: 500;
     font-size: 1rem;
 }
-
-/*
-.searchInterfaceContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 30px;
-}
-
-.searchTextInputInterface {
-    width: 100%;
-}
-
-.searchResultsContainer {
-    width: 400px;
-}
-
-.searchContentContainer {
-    display: flex;
-    justify-content: space-between;
-}
-
-.searchResult {
-    margin-bottom: 15px;
-    list-style-type: none;
-    border: 1px solid $divider-color;
-}
-
-.resultName {
-    color: $theme-color;
-    font-weight: 600;
-    font-size: 1.15rem;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.resultInfo {
-    padding-left: 10%;
-    padding-right: 10%;
-    font-size: 0.9rem;
-}
-
-.resultButton {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.search-map {
-    margin: 0 !important;
-    max-width: 500px !important;
-    max-height: 500px !important;
-}*/

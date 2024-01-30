@@ -26,8 +26,9 @@ function translateRes(queryRes) {
 
             const f = config[cKey]["fields"];
             for (let i = 0; i < f.length; i++) {
-                data = `${data}${queryRes[qKey][f[i]]} &bull; `;
-                console.log(data);
+                if (f[i] in queryRes[qKey]) {
+                    data = `${data}${queryRes[qKey][f[i]]} &bull; `;
+                }
             }
 
             data = data.slice(0, -" &bull; ".length);
@@ -42,7 +43,7 @@ function translateRes(queryRes) {
 
 function buildResultHtml(res) {
     return `
-        <div class="row resultName">${res["file"]}</div>
+        <a class="row resultName" href="details/?id=${res["id"]}">${res["file"]}</a>
         <div class="row resultText">${res["text"]}</div>
         <div class="row resultAttributes">${res["producer"]} &bull; 
             ${res["area"]} &bull; ${res["type"]} &bull; ${res["usecase"]}</div>`;

@@ -22,8 +22,3 @@ export function getURLValues() {
     }
     return values;
 }
-
-export function fillDetail(id, val) {
-    const detailDiv = document.getElementById(id);
-    detailDiv.innerHTML = val;
-}
