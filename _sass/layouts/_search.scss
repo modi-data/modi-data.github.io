@@ -7,6 +7,48 @@
     border-radius: 10px;
 }
 
+.searchResultsBody {
+    margin-top: 25px;
+}
+
+.searchResult {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style-type: none;
+    border-radius: 10px;
+    background-color: $searchresult-base-bg-color;
+    transition: background-color 0.5s;
+}
+
+.searchResult:hover {
+    background-color: $search-container-bg-color;
+    transition: background-color 0.5s;
+}
+
+.resultName {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $theme-color;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+.resultText {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+.resultAttributes {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $theme-color;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
 /*
 .searchInterfaceContainer {
     display: flex;

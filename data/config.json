@@ -1,5 +1,13 @@
 {
   "search": {
+    "id": {
+      "type": "hidden",
+      "fields": ["id"]
+    },
+    "file": {
+      "type": "hidden",
+      "fields": ["file"]
+    },
     "text": {
       "type": "full-text",
       "fields": [

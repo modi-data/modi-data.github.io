@@ -31,7 +31,13 @@ export class Database {
             await new Promise(resolve => setTimeout(resolve, 100));
         }
         
-        const queryRes = this.db.exec(sqlString)["0"];
+        let queryRes = this.db.exec(sqlString);
+
+        if (queryRes.length == 0) {
+            return json ? {} : [];
+        }
+        
+        queryRes = queryRes[0];
 
         if (json) {
             let jsonRes = {};
