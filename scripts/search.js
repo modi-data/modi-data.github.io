@@ -15,6 +15,18 @@ const resultsContainer = document.getElementById("searchResultsBody");
 // MAIN FUNCTIONALITY
 //----------------------------------------------------------------
 
+function makeBold(input, select) {
+    if (select == "") {
+        return input;
+    }
+
+    console.log(select);
+    console.log(new RegExp(`${select}`,'ig'));
+    let temp = input.replace(new RegExp(`([a-z]*${select}[a-z]*)`,'ig'), `<b>$1</b>`);
+    console.log(temp);
+    return temp;
+}
+
 function translateRes(queryRes) {
     let translation = {};
 
@@ -41,49 +53,46 @@ function translateRes(queryRes) {
     return translation;
 }
 
-function buildResultHtml(res) {
+function buildResultHtml(res, searchText) {
     return `
-        <a class="row resultName" href="details/?id=${res["id"]}">${res["file"]}</a>
-        <div class="row resultText">${res["text"]}</div>
-        <div class="row resultAttributes">${res["producer"]} &bull; 
+        <a class="resultName" href="details/?id=${res["id"]}">${res["file"]}</a>
+        <div class="resultText">${makeBold(res["text"], searchText)}</div>
+        <div class="resultAttributes">${res["producer"]} &bull; 
             ${res["area"]} &bull; ${res["type"]} &bull; ${res["usecase"]}</div>`;
 }
 
-async function displaySearchResults(res) {
+async function displaySearchResults(res, searchText) {
     resultsContainer.innerHTML = "";
 
     for (const key in res) {
         const result = document.createElement("li");
-        result.className = 'container searchResult';
+        result.className = 'searchResult';
         result.id = res[key]["id"];
-        result.innerHTML = buildResultHtml(res[key]);
+        result.innerHTML = buildResultHtml(res[key], searchText);
         resultsContainer.appendChild(result);
     }
 }
 
 async function search() {
-    let query = `SELECT ${columns} FROM metadata`;
-    let optionsSet = false;
+    let query = `SELECT ${columns} FROM metadata WHERE (file LIKE '%${input["text"].value}%'`;
+
+    for (let i = 0; i < config["text"]["fields"].length; i++) {
+        query = `${query} OR "${config["text"]["fields"][i]}" LIKE '%${input["text"].value}%'`
+    }
+
+    query = `${query}) AND `
 
     // Add options to query
     for (const key in config) {
         if (config[key]["type"] == "options" && input[key].value) {
-            if (!optionsSet) {
-                query = `${query} WHERE `;
-                optionsSet = true;
-            }
-
             query = `${query}"${config[key]["fields"][0]}"='${input[key].value}' AND `;
         }
     }
 
-    if (optionsSet) {
-        query = query.slice(0, -" AND ".length);
-    }
+    query = query.slice(0, -" AND ".length);
 
     db.querySQL(query).then(res => {
-        console.log(res);
-        displaySearchResults(translateRes(res));
+        displaySearchResults(translateRes(res), input["text"].value);
     });
 }
 
