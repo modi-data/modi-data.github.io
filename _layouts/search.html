@@ -1,30 +1,48 @@
 ---
 layout: default
 ---
-<div class="container search-container">
-    <div class="row">
-        <div class="col" style="padding-right: 0px;">
-            {% include textinputfield.html placeholder="Search..." id="textID" %}
+<form id="form" action="javascript:void(0);">
+    <div class="container search-container">
+        <div class="row">
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Search..." id="textID" name="text" %}
+            </div>
+            <div class="col-md-auto" style="padding-left: 0px;">
+                {% include searchButton.html src=site.search_icon id="searchButtonID" %} 
+            </div>
         </div>
-        <div class="col-md-auto" style="padding-left: 0px;">
-            {% include searchButton.html id="searchButtonID" %} 
+        <div class="row" style="margin-top: 10px;">
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Producer" id="producerID" name="producer" options="producerOptions" %}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Area" id="areaID" name="area" options="areaOptions"%}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Data type" id="typeID" name="type" options="typeOptions"%}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Modi use case" id="usecaseID" name="usecase" options="usecaseOptions"%}
+            </div>
+            <div class="col-md-auto" style="padding-left: 0px;">
+                {% include searchButton.html src=site.dropdown_icon id="dropdownOptionID" %}
+            </div>
         </div>
     </div>
-    <div class="row" style="margin-top: 10px;">
-        <div class="col" style="padding-right: 0px;">
-            {% include textinputfield.html placeholder="Producer" id="producerID" options="producerOptions" %}
-        </div>
-        <div class="col" style="padding-right: 0px;">
-            {% include textinputfield.html placeholder="Area" id="areaID" options="areaOptions"%}
-        </div>
-        <div class="col" style="padding-right: 0px;">
-            {% include textinputfield.html placeholder="Data type" id="typeID" options="typeOptions"%}
-        </div>
-        <div class="col">
-            {% include textinputfield.html placeholder="Modi use case" id="usecaseID" options="usecaseOptions"%}
-        </div>
-    </div>
-</div>
-<div class="searchResultsBody" id="searchResultsBody">
 
+    <div class="container dropdown-container">
+        <div class="row">
+            <div class="col" id="producerDROPDOWNID">
+            </div>
+            <div class="col" id="areaDROPDOWNID">
+            </div>
+            <div class="col" id="typeDROPDOWNID">
+            </div>
+            <div class="col" id="usecaseDROPDOWNID">
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="searchResultsBody" id="searchResultsBody">
 </div>

@@ -6,6 +6,8 @@
     background-color: $search-container-bg-color;
     border-radius: 10px;
     box-shadow: 1px 1px 4px;
+    z-index: 1;
+    position: relative;
 }
 
 .searchResultsBody {
@@ -54,4 +56,14 @@
     color: $theme-color;
     font-weight: 500;
     font-size: 1rem;
+}
+
+.dropdown-container {
+    background-color: $dropdown-container-bg-color;
+    z-index: 0;
+    position: relative;
+    width: 98%;
+    padding-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 1px 2px;
 }

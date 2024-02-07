@@ -1,5 +1,5 @@
 import { db } from './Database.js';
-import { addOptions } from './util.js';
+import { addOptions, addCheckbox } from './util.js';
 
 //----------------------------------------------------------------
 // GLOBAL VARIABLES
@@ -73,6 +73,28 @@ async function displaySearchResults(res, searchText) {
     }
 }
 
+function processFormData() {
+    const form = new FormData(document.getElementById("form"));
+    let jsonData = {};
+
+    form.forEach((value, key) => {
+        if (value !== "") {
+            if (key in jsonData) {
+                jsonData[key].push(value);
+            } else {
+                jsonData[key] = [value];
+            }
+        }
+    });
+
+    return jsonData;
+}
+
+async function search() {
+    let data = processFormData();
+    
+}
+/*
 async function search() {
     let query = `SELECT ${columns} FROM metadata WHERE (file LIKE '%${input["text"].value}%'`;
 
@@ -94,7 +116,7 @@ async function search() {
     db.querySQL(query).then(res => {
         displaySearchResults(translateRes(res), input["text"].value);
     });
-}
+}*/
 
 //----------------------------------------------------------------
 // PAGE SETUP
@@ -134,7 +156,17 @@ fetch('/data/config.json').then(res => { //Check fetch response
 
         if (col["type"] == "options") {
             for (let i = 0; i < col["fields"].length; i++) {
-                addOptions(db, col["fields"][i], `${key}Options`);
+                addOptions(db, col["fields"][i], key, "Options");
+            }
+        }
+    }
+}).then(() => { //Add checkboxes
+    for (const key in config) {
+        let col = config[key];
+
+        if (col["type"] == "options") {
+            for (let i = 0; i < col["fields"].length; i++) {
+                addCheckbox(db, col["fields"][i], key, "DROPDOWNID");
             }
         }
     }

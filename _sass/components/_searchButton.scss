@@ -4,6 +4,12 @@
   color: $button-standard-text-color;
   aspect-ratio: 1 / 1;
   width: 41px;
+  transition: 0.4s;
+}
+
+.search-button:hover {
+  background-color: $theme-hover-color;
+  transition: 0.2s;
 }
 
 .search-icon {
