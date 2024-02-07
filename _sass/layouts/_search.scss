@@ -62,8 +62,11 @@
     background-color: $dropdown-container-bg-color;
     z-index: 0;
     position: relative;
-    width: 98%;
+    width: 98.5%;
     padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 1px 1px 2px;
+    display: none;
+    transition: 1s;
 }

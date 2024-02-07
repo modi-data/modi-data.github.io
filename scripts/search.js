@@ -9,6 +9,8 @@ let input = null; //html input fields
 let config = null;
 let columns = null; //All the columns we want to search in
 const searchButton = document.getElementById("searchButtonID");
+const dropdownButton = document.getElementById("dropdownID");
+const dropdownMenu = document.getElementById("dropdownMenuID");
 const resultsContainer = document.getElementById("searchResultsBody");
 
 //----------------------------------------------------------------
@@ -91,9 +93,14 @@ function processFormData() {
 }
 
 async function search() {
-    let data = processFormData();
-    
+    const data = processFormData();
+    console.log(data);
+
+    db.querySQL("SELECT * FROM metadata").then(res => {
+        displaySearchResults(translateRes(res), "");
+    });
 }
+
 /*
 async function search() {
     let query = `SELECT ${columns} FROM metadata WHERE (file LIKE '%${input["text"].value}%'`;
@@ -117,6 +124,16 @@ async function search() {
         displaySearchResults(translateRes(res), input["text"].value);
     });
 }*/
+
+function toggleVisibility() {
+    if(dropdownMenu.style.display == 'block') {
+        dropdownMenu.style.display = 'none';
+        dropdownButton.getElementsByTagName('img')[0].style.transform = 'scaleY(1)';
+    } else {
+        dropdownMenu.style.display = 'block';
+        dropdownButton.getElementsByTagName('img')[0].style.transform = 'scaleY(-1)';
+    }
+}
 
 //----------------------------------------------------------------
 // PAGE SETUP
@@ -150,6 +167,7 @@ fetch('/data/config.json').then(res => { //Check fetch response
     columns = columns.slice(0, -2);
 }).then(() => { //Setup eventlistener
     searchButton.addEventListener("click", search);
+    dropdownButton.addEventListener("click", toggleVisibility);
 }).then(() => { //Load options
     for (const key in config) {
         let col = config[key];
