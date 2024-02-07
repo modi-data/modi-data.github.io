@@ -11,9 +11,9 @@
     "text": {
       "type": "full-text",
       "fields": [
-      "summary-why_was_it_collected",
-      "summary-objectives",
-      "summary-research_questions"]
+        "summary-why_was_it_collected",
+        "summary-objectives",
+        "summary-research_questions"]
     },
     "producer":{
       "type": "options",

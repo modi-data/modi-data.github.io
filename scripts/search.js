@@ -22,11 +22,7 @@ function makeBold(input, select) {
         return input;
     }
 
-    console.log(select);
-    console.log(new RegExp(`${select}`,'ig'));
-    let temp = input.replace(new RegExp(`([a-z]*${select}[a-z]*)`,'ig'), `<b>$1</b>`);
-    console.log(temp);
-    return temp;
+    return input.replace(new RegExp(`([a-z]*${select}[a-z]*)`,'ig'), `<b>$1</b>`);
 }
 
 function translateRes(queryRes) {
@@ -73,6 +69,10 @@ async function displaySearchResults(res, searchText) {
         result.innerHTML = buildResultHtml(res[key], searchText);
         resultsContainer.appendChild(result);
     }
+
+    if (resultsContainer.innerHTML == "") {
+        resultsContainer.innerHTML = "No Results";
+    }
 }
 
 function processFormData() {
@@ -92,38 +92,74 @@ function processFormData() {
     return jsonData;
 }
 
-async function search() {
-    const data = processFormData();
-    console.log(data);
+function addTextToQuery(query, fields, texts) {
+    query = `${query}(`;
+    for (const field of fields) {
+        query = `${query}(`;
 
-    db.querySQL("SELECT * FROM metadata").then(res => {
-        displaySearchResults(translateRes(res), "");
-    });
+        for (const text of texts) {
+            query = `${query}"${field}" LIKE '%${text}%' OR `
+        }
+        query = query.slice(0, -" OR ".length);
+        query = `${query}) OR `;
+    }
+    query = query.slice(0, -" OR ".length);
+    query = `${query})`;
+
+    return query;
 }
 
-/*
-async function search() {
-    let query = `SELECT ${columns} FROM metadata WHERE (file LIKE '%${input["text"].value}%'`;
-
-    for (let i = 0; i < config["text"]["fields"].length; i++) {
-        query = `${query} OR "${config["text"]["fields"][i]}" LIKE '%${input["text"].value}%'`
-    }
-
-    query = `${query}) AND `
-
-    // Add options to query
+function addOptionsToQuery(query, data) {
     for (const key in config) {
-        if (config[key]["type"] == "options" && input[key].value) {
-            query = `${query}"${config[key]["fields"][0]}"='${input[key].value}' AND `;
+        if (config[key]["type"] == "options" && key in data) {
+            query = `${query}(`;
+
+            for (const val of data[key]) {
+                query = `${query}"${config[key]["fields"][0]}"="${val}" OR `
+            }
+            query = query.slice(0, -" OR ".length);
+            query = `${query}) AND `;
         }
     }
 
+    return query;
+}
+
+async function search() {
+    const data = processFormData();
+
+    let query = `SELECT ${columns} FROM metadata`;
+    
+    if (Object.keys(data).length == 0) {
+        db.querySQL(query).then(res => {
+            displaySearchResults(translateRes(res), "");
+        });
+        return;
+    }
+
+    query = `${query} WHERE `;
+
+    if ("text" in data) {
+        const fields = ['file'].concat(config["text"]["fields"]);
+        query = addTextToQuery(query, fields, data['text']);
+        query = `${query} AND `;
+    }
+
+    query = addOptionsToQuery(query, data);
+
     query = query.slice(0, -" AND ".length);
 
+    if ("text" in data) {
+        db.querySQL(query).then(res => {
+            displaySearchResults(translateRes(res), data["text"][0]);
+        });
+        return;
+    }
+
     db.querySQL(query).then(res => {
-        displaySearchResults(translateRes(res), input["text"].value);
+        displaySearchResults(translateRes(res), "");
     });
-}*/
+}
 
 function toggleVisibility() {
     if(dropdownMenu.style.display == 'block') {
