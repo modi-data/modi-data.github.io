@@ -5,13 +5,13 @@ import { addOptions, addCheckbox } from './util.js';
 // GLOBAL VARIABLES
 //----------------------------------------------------------------
 
-let input = null; //html input fields
 let config = null;
 let columns = null; //All the columns we want to search in
 const searchButton = document.getElementById("searchButtonID");
 const dropdownButton = document.getElementById("dropdownID");
 const dropdownMenu = document.getElementById("dropdownMenuID");
 const resultsContainer = document.getElementById("searchResultsBody");
+const searchContainer = document.getElementById("searchcontainerID");
 
 //----------------------------------------------------------------
 // MAIN FUNCTIONALITY
@@ -164,10 +164,15 @@ async function search() {
 function toggleVisibility() {
     if(dropdownMenu.style.display == 'block') {
         dropdownMenu.style.display = 'none';
-        dropdownButton.getElementsByTagName('img')[0].style.transform = 'scaleY(1)';
+        dropdownButton.getElementsByTagName('img')[0].style.transform = null;
+
+        if (document.querySelectorAll('input:checked').length != 0) {
+            searchContainer.style.boxShadow = "1px 1px 4px blue";
+        }
     } else {
         dropdownMenu.style.display = 'block';
         dropdownButton.getElementsByTagName('img')[0].style.transform = 'scaleY(-1)';
+        searchContainer.style.boxShadow = null;
     }
 }
 
@@ -184,15 +189,12 @@ fetch('/data/config.json').then(res => { //Check fetch response
     return res.json();
 }).then(resJson => { //Setup field configs and columns
     config = resJson["search"];
-    input = {};
     columns = 'id, file, ';
 
     for (const key in config) {
         if (config[key]["type"] == "hidden") {
             continue;
         }
-
-        input[key] = document.getElementById(`${key}ID`);
 
         //init columns
         for (let i = 0; i < config[key]["fields"].length; i++) {
