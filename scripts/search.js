@@ -175,7 +175,7 @@ function toggleVisibility() {
         dropdownButton.getElementsByTagName('img')[0].style.transform = null;
 
         if (document.querySelectorAll('input:checked').length != 0) {
-            searchContainer.style.boxShadow = "1px 1px 4px blue";
+            searchContainer.style.boxShadow = "1px 3px 4px blue";
         }
     } else {
         dropdownMenu.style.display = 'block';
