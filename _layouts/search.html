@@ -1,23 +1,48 @@
 ---
 layout: default
 ---
-<div class="searchInterfaceContainer">
-    <div class="searchTextInputInterface">
-        {{ content }}
+<form id="form" action="javascript:void(0);">
+    <div class="container search-container" id="searchcontainerID">
+        <div class="row">
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Search..." id="textID" name="text" %}
+            </div>
+            <div class="col-md-auto" style="padding-left: 0px;">
+                {% include searchButton.html src=site.search_icon id="searchButtonID" %} 
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Producer" id="producerID" name="producer" options="producerOptions" %}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Area" id="areaID" name="area" options="areaOptions"%}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Data type" id="typeID" name="type" options="typeOptions"%}
+            </div>
+            <div class="col" style="padding-right: 0px;">
+                {% include textinputfield.html placeholder="Modi use case" id="usecaseID" name="usecase" options="usecaseOptions"%}
+            </div>
+            <div class="col-md-auto" style="padding-left: 0px;">
+                {% include searchButton.html src=site.dropdown_icon id="dropdownID" %}
+            </div>
+        </div>
     </div>
-    <!--The div element for the map -->
-    <div class="search-map" id="map"> </div>
-    <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
+
+    <div class="container dropdown-container" id="dropdownMenuID">
+        <div class="row">
+            <div class="col" style="padding-right: 0px;" id="producerDROPDOWNID">
+            </div>
+            <div class="col" style="padding-right: 0px;" id="areaDROPDOWNID">
+            </div>
+            <div class="col" style="padding-right: 0px;" id="typeDROPDOWNID">
+            </div>
+            <div class="col" style="padding-right: 0px; margin-right: 40px;" id="usecaseDROPDOWNID">
+            </div>
+        </div>
     </div>
-</div>
+</form>
 
-{% assign other_text = "Search for " | append: page.other_type %}
-{% assign other_link = "search" | append: page.other_type | relative_url %}
-
-<div class="searchContentContainer">
-    <ul class='searchResultsContainer' id='searchResults'>
-    </ul>
-    {% include button.html text=other_text link=other_link %}
+<div class="searchResultsBody" id="searchResultsBody">
 </div>

@@ -1,14 +1,27 @@
-export function addOptions(db, table, column, htmlId) {
-    db.querySQL(`SELECT DISTINCT ${column} FROM ${table}`).then(
-        function(searchResults) {
-            const datalist = document.getElementById(htmlId);
-            datalist.innerHTML = "";
+export function addOptions(db, column, name, groupName) {
+    let htmlID = `${name}${groupName}`;
+    const datalist = document.getElementById(htmlID);
 
-            searchResults[0]['values'].forEach(element => {
-                datalist.innerHTML = datalist.innerHTML + `<option value="${element[0]}">`
-            });
+    db.querySQL(`SELECT DISTINCT "${column}" FROM ${db.tableName}`).then(res => {
+        for (let row in res) {
+            datalist.innerHTML = datalist.innerHTML + `<option value="${res[row][column]}"></option>`
         }
-    );
+    });
+}
+
+export function addCheckbox(db, column, name, groupName) {
+    let htmlID = `${name}${groupName}`;
+    const datalist = document.getElementById(htmlID);
+
+    db.querySQL(`SELECT DISTINCT "${column}" FROM ${db.tableName}`).then(res => {
+        let i = 1;
+        for (let row in res) {
+            datalist.innerHTML = datalist.innerHTML + `
+                <input type="checkbox" id="${name}${i}" name="${name}" value="${res[row][column]}">
+                <label for="${name}${i}">${res[row][column]}</label><br>`;
+            i = i + 1;
+        }
+    });
 }
 
 //Get variables encoded in the url
@@ -25,9 +38,4 @@ export function getURLValues() {
       }
     }
     return values;
-}
-
-export function fillDetail(id, val) {
-    const detailDiv = document.getElementById(id);
-    detailDiv.innerHTML = val;
 }

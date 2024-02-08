@@ -1,0 +1,19 @@
+.search-button {
+  background-color: $theme-color;
+  border: none;
+  color: $button-standard-text-color;
+  aspect-ratio: 1 / 1;
+  width: 41px;
+  transition: 0.4s;
+}
+
+.search-button:hover {
+  background-color: $theme-hover-color;
+  transition: 0.2s;
+}
+
+.search-icon {
+  width: 70%;
+  object-fit: cover;
+  filter: brightness(0) invert(1);
+}

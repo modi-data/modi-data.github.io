@@ -1,0 +1,57 @@
+{
+  "search": {
+    "id": {
+      "type": "hidden",
+      "fields": ["id"]
+    },
+    "file": {
+      "type": "hidden",
+      "fields": ["file"]
+    },
+    "text": {
+      "type": "full-text",
+      "fields": [
+        "summary-why_was_it_collected",
+        "summary-objectives",
+        "summary-research_questions"]
+    },
+    "producer":{
+      "type": "options",
+      "fields": ["summary-producer_of_data"]
+    },
+    "area":{
+      "type": "options",
+      "fields": ["summary-data_area"]
+    },
+    "type":{
+      "type": "options",
+      "fields": ["summary-data_type"]
+    },
+    "usecase":{
+      "type": "options",
+      "fields": ["summary-modi_use_case"]
+    }
+  },
+  "show": {
+    "file": "file",
+    "text": {
+      "why was it collected": "summary-why_was_it_collected",
+      "objectives": "summary-objectives",
+      "research questions": "summary-research_questions",
+      "collection preparation": "administrative-processes-collection_preparation",
+      "collection": "administrative-processes-collection"
+    },
+    "data": {
+      "dataset size": "summary-dataset_size",
+      "data end of life": "administrative-data_end_of_life"
+    },
+    "administrative": {
+      "contact": "summary-contact_person",
+      "rights": "administrative-rights",
+      "license": "administrative-license",
+      "access": "administrative-access",
+      "constraints": "administrative-constraints",
+      "billing": "administrative-billing"
+    }
+  }
+}

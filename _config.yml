@@ -20,13 +20,15 @@ linkedin_icon: "assets/img/linkedinicon.png"
 twitter_icon: "assets/img/twittericon.png"
 youtube_icon: "assets/img/youtubeicon.png"
 github_icon: "assets/img/githubicon.png"
+search_icon: "assets/img/search.png"
+dropdown_icon: "assets/img/dropdown.png"
 
 # -----------------------------------------------------------------------------
 # Style settings
 # -----------------------------------------------------------------------------
 
 #Width that the content of a page is in contained
-max_width: 1000px;
+max_width: 1100px;
 
 # -----------------------------------------------------------------------------
 # Jekyll settings

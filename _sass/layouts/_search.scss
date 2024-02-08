@@ -1,51 +1,72 @@
-.searchInterfaceContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 30px;
+.search-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $search-container-bg-color;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px;
+    z-index: 1;
+    position: relative;
 }
 
-.searchTextInputInterface {
-    width: 100%;
-}
-
-.searchResultsContainer {
-    width: 400px;
-}
-
-.searchContentContainer {
-    display: flex;
-    justify-content: space-between;
+.searchResultsBody {
+    margin-top: 25px;
 }
 
 .searchResult {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     list-style-type: none;
-    border: 1px solid $divider-color;
+    border-radius: 10px;
+    background-color: $searchresult-base-bg-color;
+    transition: 0.6s;
+}
+
+.searchResult:hover {
+    background-color: $search-container-bg-color;
+    box-shadow: 1px 1px 4px;
+    transition: 0.3s;
 }
 
 .resultName {
+    padding-left: 10px;
+    padding-right: 10px;
     color: $theme-color;
     font-weight: 600;
     font-size: 1.15rem;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    text-decoration: none;
 }
 
-.resultInfo {
-    padding-left: 10%;
-    padding-right: 10%;
-    font-size: 0.9rem;
+.resultName:hover {
+    text-decoration: underline;
 }
 
-.resultButton {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: center;
+.resultText {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
 }
 
-.search-map {
-    margin: 0 !important;
-    max-width: 500px !important;
-    max-height: 500px !important;
+.resultAttributes {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $theme-color;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.dropdown-container {
+    background-color: $dropdown-container-bg-color;
+    z-index: 0;
+    position: relative;
+    width: 98.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 1px 2px;
+    display: none;
+    transition: 1s;
 }
