@@ -92,13 +92,17 @@ function processFormData() {
     return jsonData;
 }
 
+function encodeHTMLChars(str) {
+    return str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+}
+
 function addTextToQuery(query, fields, texts) {
     query = `${query}(`;
     for (const field of fields) {
         query = `${query}(`;
 
         for (const text of texts) {
-            query = `${query}"${field}" LIKE '%${text}%' OR `
+            query = `${query}"${field}" LIKE "%${encodeHTMLChars(text)}%" OR `;
         }
         query = query.slice(0, -" OR ".length);
         query = `${query}) OR `;
@@ -115,7 +119,7 @@ function addOptionsToQuery(query, data) {
             query = `${query}(`;
 
             for (const val of data[key]) {
-                query = `${query}"${config[key]["fields"][0]}"="${val}" OR `
+                query = `${query}"${config[key]["fields"][0]}"="${encodeHTMLChars(val)}" OR `;
             }
             query = query.slice(0, -" OR ".length);
             query = `${query}) AND `;
@@ -127,6 +131,8 @@ function addOptionsToQuery(query, data) {
 
 async function search() {
     const data = processFormData();
+    console.log(data);
+
 
     let query = `SELECT ${columns} FROM metadata`;
     
@@ -148,6 +154,8 @@ async function search() {
     query = addOptionsToQuery(query, data);
 
     query = query.slice(0, -" AND ".length);
+
+    console.log(query);
 
     if ("text" in data) {
         db.querySQL(query).then(res => {
