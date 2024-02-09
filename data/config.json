@@ -1,4 +1,7 @@
-{
+{ 
+  "general": {
+    "linkToYMLFiles": "https://raw.githubusercontent.com/modi-data/modi-metadata/main/yml/"
+  },
   "search": {
     "id": {
       "type": "hidden",

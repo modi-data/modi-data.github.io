@@ -37,8 +37,15 @@ function fillPage(config, data) {
     }
 }
 
+function configDonwload(config, file) {
+    let a = document.getElementById("downloadLinkID");
+    a.href = `${config["linkToYMLFiles"]}${file}`;
+    a.download = file;
+}
+
 async function showData(config) {
     db.querySQL(`SELECT * FROM metadata WHERE id=${getURLValues()["id"]}`).then(res => {
+        configDonwload(config["general"], res["0"]["file"]);
         fillPage(config["show"], res["0"]);
     });
 }
