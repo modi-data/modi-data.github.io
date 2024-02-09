@@ -38,14 +38,12 @@ function fillPage(config, data) {
 }
 
 function configDonwload(config, file) {
-    console.log(config);
     let a = document.getElementById("downloadLinkID");
     a.href = `${config["linkToYMLFiles"]}${file}`;
     a.download = file;
 }
 
 async function showData(config) {
-    console.log(config); 
     db.querySQL(`SELECT * FROM metadata WHERE id=${getURLValues()["id"]}`).then(res => {
         configDonwload(config["general"], res["0"]["file"]);
         fillPage(config["show"], res["0"]);
