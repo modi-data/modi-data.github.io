@@ -45,7 +45,7 @@ function configDonwload(config, file) {
 }
 
 async function showData(config) {
-    console.log(config);
+    console.log(config); 
     db.querySQL(`SELECT * FROM metadata WHERE id=${getURLValues()["id"]}`).then(res => {
         configDonwload(config["general"], res["0"]["file"]);
         fillPage(config["show"], res["0"]);
