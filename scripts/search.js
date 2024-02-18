@@ -234,4 +234,4 @@ fetch('/data/config.json').then(res => { //Check fetch response
             }
         }
     }
-});
+}).then(search);
