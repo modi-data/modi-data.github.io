@@ -3,7 +3,7 @@ import { db } from "./Database.js";
 export class OLMap {
     map = null;
 
-    constructor(table, addPopup) {
+    constructor(center) {
         //Init map
         this.map = new ol.Map({
             target: 'map',
@@ -13,7 +13,7 @@ export class OLMap {
                 }),
             ],
             view: new ol.View({
-                center: ol.proj.fromLonLat([14.267089, 46.956260]),
+                center: ol.proj.fromLonLat(center),
                 zoom: 4,
             }),
             controls: [],
