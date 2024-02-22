@@ -10,6 +10,12 @@
   background-color: $theme-color;
   border: none;
   color: $button-standard-text-color;
+  transition: 0.4s;
+}
+
+.standard-style:hover {
+  background-color: $theme-hover-color;
+  transition: 0.2s;
 }
 
 .white-style {

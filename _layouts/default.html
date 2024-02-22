@@ -13,9 +13,15 @@
     {%- include header.html %}
 
     <!-- Content -->
-    <div class="container mt-3">
-      {{ content }}
-    </div>
+    {% if page.no_max %}
+      <div class="mt-3">
+        {{ content }}
+      </div>
+    {% else %}
+      <div class="container maxwidth-container mt-3">
+        {{ content }}
+      </div>
+    {% endif %}
 
     <!-- Footer -->
     {%- include footer.html %}

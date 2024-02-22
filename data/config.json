@@ -55,6 +55,12 @@
       "access": "administrative-access",
       "constraints": "administrative-constraints",
       "billing": "administrative-billing"
+    },
+    "misc": {
+      "producer": "summary-producer_of_data",
+      "area": "summary-data_area",
+      "data type": "summary-data_type",
+      "usecase": "summary-modi_use_case"
     }
   }
 }

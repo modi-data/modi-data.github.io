@@ -28,7 +28,7 @@ dropdown_icon: "assets/img/dropdown.png"
 # -----------------------------------------------------------------------------
 
 #Width that the content of a page is in contained
-max_width: 1100px;
+max_width: 60vw;
 
 # -----------------------------------------------------------------------------
 # Jekyll settings

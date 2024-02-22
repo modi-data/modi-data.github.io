@@ -1,14 +1,17 @@
 ---
 layout: default
 ---
-<div class="container details-container">
-    <div class="row">
-        <h1 class="col details-file" id="fileID">Loading...</h1>
-        <div class="col-md-auto" style="padding: 0px;margin: 0px;">
-            {% include button.html text="Download" link="/" big=true id="downloadLinkID" %}
+<div class="details-body">
+    <div class="details-main">
+        <div class="container maxwidth-container details-container">
+            <h1 class="row details-file" id="fileID">Loading...</h1>
+            <div class="row details-textContainer" id="textID"></div>
+            <div class="row details-dataContainer" id="miscID"></div>
         </div>
     </div>
-    <div class="row details-textContainer" id="textID"></div>
-    <div class="row details-dataContainer" id="dataID"></div>
-    <div class="row details-administrativeContainer" id="administrativeID"></div>
+    <div class="details-administrativeContainer">
+        {% include button.html text="Download" link="/" big=true id="downloadLinkID" %}
+        <div class="administrative-spacing" id="administrativeID"></div>
+        <div class="administrative-spacing" id="dataID"></div>
+    </div>
 </div>
