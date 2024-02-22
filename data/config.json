@@ -38,29 +38,29 @@
   "show": {
     "file": "file",
     "text": {
-      "why was it collected": "summary-why_was_it_collected",
-      "objectives": "summary-objectives",
-      "research questions": "summary-research_questions",
-      "collection preparation": "administrative-processes-collection_preparation",
-      "collection": "administrative-processes-collection"
+      "Why was it collected": "summary-why_was_it_collected",
+      "Objectives": "summary-objectives",
+      "Research questions": "summary-research_questions",
+      "Collection preparation": "administrative-processes-collection_preparation",
+      "Collection": "administrative-processes-collection"
     },
     "data": {
-      "dataset size": "summary-dataset_size",
-      "data end of life": "administrative-data_end_of_life"
+      "Dataset size": "summary-dataset_size",
+      "Data end of life": "administrative-data_end_of_life"
     },
     "administrative": {
-      "contact": "summary-contact_person",
-      "rights": "administrative-rights",
-      "license": "administrative-license",
-      "access": "administrative-access",
-      "constraints": "administrative-constraints",
-      "billing": "administrative-billing"
+      "Contact": "summary-contact_person",
+      "Rights": "administrative-rights",
+      "License": "administrative-license",
+      "Access": "administrative-access",
+      "Constraints": "administrative-constraints",
+      "Billing": "administrative-billing"
     },
     "misc": {
-      "producer": "summary-producer_of_data",
-      "area": "summary-data_area",
-      "data type": "summary-data_type",
-      "usecase": "summary-modi_use_case"
+      "Producer": "summary-producer_of_data",
+      "Area": "summary-data_area",
+      "Data type": "summary-data_type",
+      "Modi use case": "summary-modi_use_case"
     }
   }
 }
