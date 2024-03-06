@@ -59,7 +59,11 @@ export class OLMap {
                             num = amounts[name];
                         }
                         
-                        const oppacity = (num / amounts["total"]) * 0.5;
+                        let oppacity = (num / amounts["total"]) * 0.6;
+
+                        if (oppacity != 0.0) {
+                            oppacity += 0.05
+                        }
 
                         return new ol.style.Style({
                             fill: new ol.style.Fill({
