@@ -3,16 +3,15 @@
     padding-right: 8vw;
 }
 
-.details-container {
-    margin-bottom: 50px;
-}
-
 .details-file {
     font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .details-textContainer {
-    margin-top: 25px;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
@@ -68,7 +67,8 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
-    margin-left: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
     max-width: 24vw;
     background-color: $searchresult-base-bg-color;
     display: inline-block;
@@ -115,4 +115,5 @@
 
 .details-main {
     display: inline-block;
+    margin-right: 16px;
 }
