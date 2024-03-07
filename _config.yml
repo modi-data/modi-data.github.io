@@ -23,6 +23,9 @@ github_icon: "assets/img/githubicon.png"
 search_icon: "assets/img/search.png"
 dropdown_icon: "assets/img/dropdown.png"
 
+partnerDirs: ["Industry", "Research", "Public partners", "Associated partners"]
+partnerPath: "assets/img/partners/"
+
 # -----------------------------------------------------------------------------
 # Style settings
 # -----------------------------------------------------------------------------
@@ -58,3 +61,8 @@ bootstrap:
 # -----------------------------------------------------------------------------
 
 db-file: 'metadata.sqlite3'
+
+
+# -----------------------------------------------------------------------------
+# MISC
+# -----------------------------------------------------------------------------

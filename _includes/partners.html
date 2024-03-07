@@ -1,0 +1,9 @@
+<h3 class="partner_title">{{ include.title }}</h3>
+
+<div class="partner_logo_container">
+    {% for image in site.static_files %} 
+        {% if image.path contains include.path %}
+            <img class="partner_logo" src="{{image.path}}">
+        {% endif %}
+    {% endfor %}
+</div>
