@@ -74,11 +74,16 @@ Check emscripten version
 ```bash
 emcc --version
 ```
-Clone sql js repo
+Clone sql js repo and reset to stable commit...\
+Yes apperently they have broken commits in their main branch for no reason.
+If you read this many years in the future and you want a more up to date version
+then go to their repository and look in the commits for their last release.
+Then reset to the commit after cloning the repo. [release page](https://github.com/sql-js/sql.js/releases)
 ```bash
 cd ~
 git clone https://github.com/sql-js/sql.js.git
 cd sql.js
+git reset --hard de08ddb35647d1b4881c90751a1e4bb6029aab57
 ```
 
 Open the makefile in the directory and add **-DSQLITE_ENABLE_FTS5** to **SQLITE_COMPILATION_FLAGS**\
@@ -100,7 +105,15 @@ Build new executables:
 make
 ```
 The new compiled files are in /dist:\
-You need sql-wasm.wasm
+You need *sql-wasm.js* and *sql-wasm.wasm*
+
+Sanity check:
+```bash
+sha1sum ./dist/sql-wasm.js
+f0f6601a9ba2ae1dc62682f08ec8a18b515b3055  ./dist/sql-wasm.js
+sha1sum ./dist/sql-wasm.wasm
+e1a5e5bb604102c5941b4a27f83129fc92afff43  ./dist/sql-wasm.wasm
+```
 
 You can now uninstall all the other garbage you just installed
 

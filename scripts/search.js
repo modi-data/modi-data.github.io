@@ -102,7 +102,7 @@ function addTextToQuery(query, fields, texts) {
         query = `${query}(`;
 
         for (const text of texts) {
-            query = `${query}"${field}" MATCH "%${encodeHTMLChars(text)}%" OR `;
+            query = `${query}"${field}" MATCH "${encodeHTMLChars(text)}" OR `;
         }
         query = query.slice(0, -" OR ".length);
         query = `${query}) OR `;
@@ -230,4 +230,8 @@ fetch('/data/config.json').then(res => { //Check fetch response
             }
         }
     }
-}).then(search);
+}).then(search).then(() => {
+    db.querySQL("SELECT * FROM metadata_fts WHERE file MATCH 'testing'").then(res => {
+        console.log(res);
+    })
+});
