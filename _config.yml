@@ -47,8 +47,7 @@ exclude: []
 # -----------------------------------------------------------------------------
 
 #sql.js wasm location
-sql-js: "https://sql.js.org/dist/sql-wasm.js"
-sql-wasm: "https://sql.js.org/dist/sql-wasm.wasm"
+sql-js: "/dist/sql-wasm.js"
 
 bootstrap:
   version: "5.2.3"

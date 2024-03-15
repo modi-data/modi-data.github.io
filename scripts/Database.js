@@ -13,11 +13,15 @@ export class Database {
     async loadDb() {
         //Database
         const sqlPromise = initSqlJs({
-            locateFile: file => `https://sql.js.org/dist/sql-wasm.wasm`
+            locateFile: file => `/dist/sql-wasm.wasm`
+            //locateFile: file => `https://sql.js.org/dist/sql-wasm.wasm`
+
         });
         const dataPromise = fetch("/data/metadata.db").then(res => res.arrayBuffer());
-        const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
-        
+        const buf = await dataPromise;
+        const SQL = await sqlPromise;
+        //const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
+        console.log('test');
         this.db = new SQL.Database(new Uint8Array(buf));
     }
 
@@ -30,7 +34,7 @@ export class Database {
         while(this.db == null) {
             await new Promise(resolve => setTimeout(resolve, 100));
         }
-        
+        console.log(db)
         let queryRes = this.db.exec(sqlString);
 
         if (queryRes.length == 0) {

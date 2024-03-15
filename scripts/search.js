@@ -102,7 +102,7 @@ function addTextToQuery(query, fields, texts) {
         query = `${query}(`;
 
         for (const text of texts) {
-            query = `${query}"${field}" LIKE "%${encodeHTMLChars(text)}%" OR `;
+            query = `${query}"${field}" MATCH "%${encodeHTMLChars(text)}%" OR `;
         }
         query = query.slice(0, -" OR ".length);
         query = `${query}) OR `;
@@ -131,8 +131,6 @@ function addOptionsToQuery(query, data) {
 
 async function search() {
     const data = processFormData();
-    console.log(data);
-
 
     let query = `SELECT ${columns} FROM metadata`;
     
@@ -154,8 +152,6 @@ async function search() {
     query = addOptionsToQuery(query, data);
 
     query = query.slice(0, -" AND ".length);
-
-    console.log(query);
 
     if ("text" in data) {
         db.querySQL(query).then(res => {
