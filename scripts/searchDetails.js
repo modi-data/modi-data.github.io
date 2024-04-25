@@ -18,7 +18,12 @@ function fillContainer(name, fields, data) {
         newData.className = `details-${name}-data`;
 
         newField.innerHTML = `${key}: `;
-        newData.innerHTML = `${data[fields[key]]}`;
+
+        let content = data[fields[key]];
+        if (content == null) {
+            content = 'N/A';
+        }
+        newData.innerHTML = `${content}`;
 
         newBox.appendChild(newField);
         newBox.appendChild(newData);

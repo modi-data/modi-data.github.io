@@ -53,6 +53,7 @@
       "Rights": "administrative-rights",
       "License": "administrative-license",
       "Access": "administrative-access",
+      "Web address": "summary-web_address",
       "Constraints": "administrative-constraints",
       "Billing": "administrative-billing"
     },
