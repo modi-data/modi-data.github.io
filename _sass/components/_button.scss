@@ -24,6 +24,12 @@
   border: 1px solid $theme-color;
 }
 
+.white-style:hover {
+  border: 1px solid $theme-hover-color;
+  color: $theme-hover-color;
+  transition: 0.2s;
+}
+
 .big-style {
   font-size: 18px;
 }
