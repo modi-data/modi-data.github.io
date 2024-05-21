@@ -1,6 +1,7 @@
 .details-body {
     padding-left: 8vw;
     padding-right: 8vw;
+    margin-bottom: 80px;
 }
 
 .details-file {
@@ -59,6 +60,12 @@
     color: $theme-color;
     padding-left: 0px;
     width: fit-content;
+    display: inline;
+}
+
+.details-data-data {
+    display: inline;
+    width: fit-content;
 }
 
 .details-administrativeContainer {
@@ -116,4 +123,15 @@
 .details-main {
     display: inline-block;
     margin-right: 16px;
+}
+
+.details-misc {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.details-data {
+    margin-top: 1em;
+    padding-left: 0px;
+    padding-right: 0px;
 }

@@ -7,7 +7,7 @@ import { getURLValues } from './util.js';
 
 function fillContainer(name, fields, data) {
     const container = document.getElementById(`${name}ID`);
-    container.innerHTML = "";
+    //container.innerHTML = "";
 
     for (const key in fields) {
         const newBox = document.createElement("div");

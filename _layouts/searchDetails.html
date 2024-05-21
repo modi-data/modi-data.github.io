@@ -6,12 +6,14 @@ layout: default
     <div class="details-main">
         <div class="container maxwidth-container">
             <div class="row details-textContainer" id="textID"></div>
-            <div class="row details-dataContainer" id="miscID"></div>
+            <div class="row details-dataContainer">
+                <div class="details-misc" id="miscID"></div>
+                <div class="details-data" id="dataID"></div>
+            </div>
         </div>
     </div>
     <div class="details-administrativeContainer">
         {% include button.html text="Download" link="/" big=true id="downloadLinkID" %}
         <div class="administrative-spacing" id="administrativeID"></div>
-        <div class="administrative-spacing" id="dataID"></div>
     </div>
 </div>

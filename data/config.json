@@ -54,6 +54,7 @@
       "License": "administrative-license",
       "Access": "administrative-access",
       "Web address": "summary-web_address",
+      "DOI": "summary-DOI",
       "Constraints": "administrative-constraints",
       "Billing": "administrative-billing"
     },
